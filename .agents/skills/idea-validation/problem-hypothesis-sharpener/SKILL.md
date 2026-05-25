@@ -58,4 +58,7 @@ This skill returns:
 
 ```shell
 $problem-hypothesis-sharpener
-```)
+```
+
+
+

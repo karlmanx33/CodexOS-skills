@@ -51,4 +51,7 @@ This skill produces fresh versions of `AGENTS.md`, `PROJECT_CONTEXT.md` and `DEC
 
 ```shell
 $project-context-file-generator
-```)
+```
+
+
+

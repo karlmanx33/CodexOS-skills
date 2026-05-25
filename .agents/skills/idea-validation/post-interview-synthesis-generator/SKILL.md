@@ -54,4 +54,7 @@ This skill returns a **post‑interview synthesis report** containing:
 
 ```shell
 $post-interview-synthesis-generator
-```)
+```
+
+
+

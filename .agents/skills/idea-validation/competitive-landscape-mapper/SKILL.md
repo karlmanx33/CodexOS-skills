@@ -59,4 +59,7 @@ This skill returns a **competitive landscape report** containing:
 
 ```shell
 $competitive-landscape-mapper
-```)
+```
+
+
+

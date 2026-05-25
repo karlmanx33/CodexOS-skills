@@ -62,4 +62,7 @@ This skill outputs an **MVP scope document** including:
 
 ```shell
 $mvp-scope-definer
-```)
+```
+
+
+

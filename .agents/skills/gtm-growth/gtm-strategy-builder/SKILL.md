@@ -66,4 +66,6 @@ This skill produces a **go‑to‑market strategy document** containing:
 ```shell
 $gtm-strategy-builder
 ```
-`)
+
+
+
