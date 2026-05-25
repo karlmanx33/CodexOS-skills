@@ -1,4 +1,4 @@
-# CodexOS Skills ??
+# CodexOS Skills
 
 [![Star Repo](https://img.shields.io/github/stars/karlmanx33/CodexOS-skills?style=social)](https://github.com/karlmanx33/CodexOS-skills/stargazers) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE) [![Release](https://img.shields.io/badge/release-v0.1.0-blue.svg)](/CHANGELOG.md)
 
