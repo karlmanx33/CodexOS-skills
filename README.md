@@ -2,7 +2,7 @@
 
 [![Star Repo](https://img.shields.io/github/stars/karlmanx33/CodexOS-skills?style=social)](https://github.com/karlmanx33/CodexOS-skills/stargazers) [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE) [![Release](https://img.shields.io/badge/release-v0.1.0-blue.svg)](/CHANGELOG.md)
 
-![CodexOS Skills social preview](assets/CodexOS-skills-640x320.png)
+![CodexOS Skills social preview](assets/CodexOS-skills.png)
 
 Welcome to **CodexOS Skills**, a curated collection of reusable Codex skills for founders, indie hackers and lean teams building AI-native products.
 This project transforms startup-building frameworks into concrete, repeatable workflows that guide you from idea validation to MVP architecture, launch readiness, scale systems, GTM and defensible moats.
@@ -92,3 +92,4 @@ Pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) for how to pr
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
