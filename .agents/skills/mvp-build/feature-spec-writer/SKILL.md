@@ -1,68 +1,90 @@
 ---
 name: feature-spec-writer
-description: Write clear, concise specifications for new features before coding begins.
+description: Advanced operational skill for feature-spec-writer.
+read_when:
+  - When working in mvp-build workflows
+  - When user asks for feature spec writer
+  - When a structured artifact must be generated
+  - When reusable documentation is required
+metadata: {"codex": {"level": "advanced", "category": "mvp-build", "runtime": "markdown+python", "requires": {"files": ["templates/", "scripts/", "examples/"]}}}
 ---
 
-# Feature Specification Writer
+# Feature Spec Writer
 
-## Purpose
+    Advanced operational skill for feature-spec-writer.
 
-Convert user stories and high‑level requirements into a detailed specification that guides Codex and human developers.  A good spec defines what to build, how it behaves, why it matters and how success will be measured.
+    ## Activation trigger
 
-## When to use
+    Use this skill when the user requests **feature spec writer** and needs a high-confidence, decision-ready outcome in **mvp-build**.
 
-Use this skill after the MVP scope has been defined and an architecture brief exists.  It should precede any coding or task decomposition.  Create a feature spec for each significant capability or change.
+    ## Required inputs
 
-## Inputs
-
-- User story or requirement description, including the problem it solves and the user persona.
-- Acceptance criteria (definition of done).
-- Relevant context: architecture brief, project constraints, existing APIs or modules, measurement framework.
-
-## Process
-
-1. **Capture the purpose and user benefit.**  Summarise why this feature matters, which user journey it serves and how it contributes to the product’s value hypothesis.
-2. **Define functional requirements.**  Write clear, testable requirements describing what the feature must do.  Include user flows, input/output behaviour, data validation rules and edge cases.
-3. **Specify acceptance criteria.**  Create bullet‑point acceptance criteria (Given/When/Then) that delineate success conditions.  Where appropriate, include metrics such as response time thresholds or conversion rates.
-4. **Document non‑functional requirements.**  Note performance targets, security and privacy constraints, accessibility standards, reliability requirements and legal/compliance considerations.
-5. **Identify dependencies and integrations.**  List other services, APIs, modules, data models or third‑party providers the feature relies on.  Note any sequencing dependencies (e.g. must implement authentication first).
-6. **Highlight out‑of‑scope elements.**  Explicitly list features or enhancements that are **not** part of this implementation to prevent scope creep.  Point to your MVP scope document for justification.
-7. **Specify instrumentation and metrics.**  Define what should be measured (e.g. feature usage, error rates, conversion), how metrics will be collected and where they will feed into your measurement framework.
-8. **Open questions and risks.**  Note any unresolved questions, assumptions or risks that may impact implementation.  Suggest research or experiments needed to resolve them.
-
-## Output
-
-This skill produces a **feature specification document** that includes:
-
-- Purpose and user benefit statement.
-- List of functional requirements and user flow descriptions.
-- Acceptance criteria formatted for testing.
-- Non‑functional requirements (performance, security, accessibility, scalability).
+    - Product objective and bounded scope.
+- Technical constraints (stack, infra, compliance).
+- Non-functional requirements (security, latency, reliability).
 - Dependencies and integration points.
-- Out‑of‑scope items.
-- Instrumentation and metrics plan.
-- Open questions and risks.
 
-## Quality checklist
+    ## Optional inputs
 
-- [ ] Purpose is clear and specific
-- [ ] Inputs are identified and complete
-- [ ] Steps are actionable and unambiguous
-- [ ] Expected output is well defined
-- [ ] Failure modes are considered
+    - Previous outputs from this skill family.
+    - Team ownership map and delivery timeline.
+    - Explicit constraints for cost, risk, or compliance.
 
-## Failure modes
+    ## Files to inspect
 
-- Writing vague requirements that cannot be tested or are open to interpretation.
-- Omitting performance or security requirements, which may lead to rework.
-- Failing to list dependencies, causing build failures or integration issues.
-- Allowing scope creep by not explicitly defining what is out of scope.
+    - `concept/`, `templates/`, `examples/`, `scripts/` in this skill folder.
+    - User-referenced repository files and related modules.
+    - Prior artifacts that constrain or inform this decision.
 
-## Example prompt
+    ## Execution workflow
 
-```shell
-$feature-spec-writer
-```
+    1. Translate product goals into architecture/spec decisions with explicit tradeoffs.
+2. Map components, boundaries, data contracts, and failure paths.
+3. Define execution slices (MVP-now vs later) and risk controls.
+4. Generate implementation-ready artifacts and acceptance criteria.
+5. Validate internal consistency across scope, architecture, and delivery plan.
 
+    ## Generated artifacts
 
+    - `outputs/brief.md`
+- `outputs/component-boundaries.md`
+- `outputs/acceptance-criteria.md`
 
+    ## Output contract
+
+    Final response must include:
+
+    - Objective and scope boundaries.
+    - Inputs and assumptions used.
+    - Analysis and decision rationale.
+    - Artifact paths and summary.
+    - Validation result and residual risks.
+    - Next actions ordered by priority.
+
+    ## Validation checklist
+
+    - Required sections are complete and non-empty.
+- No placeholder content (`TODO`, `TBD`, `lorem`, `placeholder`).
+- Claims are traceable to provided inputs or inspected files.
+- Output includes explicit decisions, risks, and next steps.
+
+    ## Safety / failure rules
+
+    - Pause and ask for clarification if required inputs are missing or contradictory.
+- Do not invent metrics, user evidence, or repository facts.
+- Do not modify unrelated files or broaden scope silently.
+- If high-risk uncertainty remains, return a gated recommendation instead of false precision.
+
+    ## Example commands
+
+    ```shell
+    $feature-spec-writer "Run feature spec writer on my current project context"
+    python scripts/run.py --input examples/input-example.md
+    python scripts/validate.py --file examples/output-example.md
+    ```
+
+    ## Advanced usage
+
+    - Run in phased mode: discovery -> draft -> validation -> final.
+    - Compare two decision branches and include tradeoff table.
+    - Enforce stricter gates for production/release-critical use.

@@ -1,0 +1,28 @@
+{
+  "name": "mvp-measurement-framework-builder",
+  "category": "mvp-build",
+  "type": "generator",
+  "runtime": "markdown+python",
+  "description": "Define metrics to evaluate activation, retention, conversion and referral during MVP testing.",
+  "inputs": [
+    "user_request",
+    "project_context",
+    "constraints"
+  ],
+  "outputs": [
+    "structured_markdown_output",
+    "validated_artifact"
+  ],
+  "scripts": {
+    "run": "scripts/run.py",
+    "validate": "scripts/validate.py"
+  },
+  "templates": [
+    "templates/output.md"
+  ],
+  "examples": {
+    "input": "examples/input-example.md",
+    "output": "examples/output-example.md"
+  },
+  "concept": "concept/CONCEPT.md"
+}

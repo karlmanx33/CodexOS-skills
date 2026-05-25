@@ -1,61 +1,90 @@
 ---
 name: codex-startup-lifecycle-mapper
-description: Map your startup to Idea, MVP, Launch or Scale to select the right workflows.
+description: Advanced operational skill for codex-startup-lifecycle-mapper.
+read_when:
+  - When working in founder-os workflows
+  - When user asks for codex startup lifecycle mapper
+  - When planning and sequencing work
+  - When scope and decisions must be explicit
+metadata: {"codex": {"level": "advanced", "category": "founder-os", "runtime": "markdown+python", "requires": {"files": ["templates/", "scripts/", "examples/"]}}}
 ---
 
 # Codex Startup Lifecycle Mapper
 
-## Purpose
+    Advanced operational skill for codex-startup-lifecycle-mapper.
 
-Identify which stage of the AI‑native startup lifecycle (Idea, MVP, Launch or Scale) your company, product or feature is currently in.  Knowing your stage ensures you use the right set of Codex skills, avoid premature scaling and focus on the evidence needed to progress.
+    ## Activation trigger
 
-## When to use
+    Use this skill when the user requests **codex startup lifecycle mapper** and needs a high-confidence, decision-ready outcome in **founder-os**.
 
-Run this skill whenever you begin a new venture or feature, and again whenever you’re uncertain about your current stage.  Reassessing regularly prevents you from skipping critical steps (like validation) or sticking too long in an exploratory phase.
+    ## Required inputs
 
-## Inputs
+    - Strategic objective and decision horizon.
+- Current constraints and bottlenecks.
+- Existing workflows, cadences, and ownership map.
+- Required outputs and success conditions.
 
-- Short description of your product
-- Current progress: interviews, prototypes, paying users
+    ## Optional inputs
 
-## Process
+    - Previous outputs from this skill family.
+    - Team ownership map and delivery timeline.
+    - Explicit constraints for cost, risk, or compliance.
 
-1. **Summarise current status.**  Capture a concise description of the product or feature along with evidence of progress: number of customer interviews completed, prototypes tested, active users, paying customers, revenue, engagement and retention metrics.
-2. **Apply stage criteria.**  Compare the evidence to the definitions of the four lifecycle stages:
-   - **Idea Stage:** You have a problem hypothesis and are conducting research and customer interviews.  No production code has been built.  Exit when a specific, validated problem and solution hypothesis exist.
-   - **MVP Stage:** You have built a minimal prototype or MVP to test whether users find value, return, pay and refer.  Evidence is focused on activation, retention and conversion.  Exit when there is strong signal of product‑market fit across your target segment.
-   - **Launch Stage:** You have a working product with active or paying users.  Focus is on removing technical debt, hardening infrastructure, instituting processes and establishing go‑to‑market channels.  Exit when the growth engine is repeatable and operations are no longer founder‑driven.
-   - **Scale Stage:** You are experiencing or planning rapid growth and must handle larger user bases, enterprise requirements, compliance, reliability and defensible moats.  Focus is on systems, automation and competitive barriers.
-3. **Determine stage.**  Match your current evidence to the above criteria to classify your stage.  When in doubt, err on the earlier stage to avoid skipping validation steps.
-4. **Recommend next skills.**  Based on the identified stage, list relevant Codex skills to use next (e.g. interview script generation for Idea, scope definition for MVP, security review for Launch, and moat narrative for Scale).
+    ## Files to inspect
 
-## Output
+    - `concept/`, `templates/`, `examples/`, `scripts/` in this skill folder.
+    - User-referenced repository files and related modules.
+    - Prior artifacts that constrain or inform this decision.
 
-This skill returns:
+    ## Execution workflow
 
-- Your current **lifecycle stage** (Idea, MVP, Launch or Scale), with justification based on evidence.
-- A **summary of gaps** preventing progression to the next stage (e.g. missing validation, lack of retention data, absence of operational processes).
-- A **list of recommended Codex skills** tailored to your stage to help you focus on the right actions.
+    1. Convert broad objective into decision-ready workstreams.
+2. Define cadence, ownership, and measurable checkpoints.
+3. Generate an execution plan with dependencies and risk gates.
+4. Create artifacts for continuity (logs, briefs, review templates).
+5. Validate feasibility against timeline and resource limits.
 
-## Quality checklist
+    ## Generated artifacts
 
-- [ ] Purpose is clear and specific
-- [ ] Inputs are identified and complete
-- [ ] Steps are actionable and unambiguous
-- [ ] Expected output is well defined
-- [ ] Failure modes are considered
+    - `outputs/execution-plan.md`
+- `outputs/decision-log.md`
+- `outputs/review-cadence.md`
 
-## Failure modes
+    ## Output contract
 
-- Misinterpreting prototypes as MVPs and thus skipping core validation work.
-- Declaring product‑market fit based on vanity metrics such as signups or downloads.
-- Failing to reassess the stage as new evidence arrives, leading to scope creep or premature scaling.
+    Final response must include:
 
-## Example prompt
+    - Objective and scope boundaries.
+    - Inputs and assumptions used.
+    - Analysis and decision rationale.
+    - Artifact paths and summary.
+    - Validation result and residual risks.
+    - Next actions ordered by priority.
 
-```shell
-$codex-startup-lifecycle-mapper
-```
+    ## Validation checklist
 
+    - Required sections are complete and non-empty.
+- No placeholder content (`TODO`, `TBD`, `lorem`, `placeholder`).
+- Claims are traceable to provided inputs or inspected files.
+- Output includes explicit decisions, risks, and next steps.
 
+    ## Safety / failure rules
 
+    - Pause and ask for clarification if required inputs are missing or contradictory.
+- Do not invent metrics, user evidence, or repository facts.
+- Do not modify unrelated files or broaden scope silently.
+- If high-risk uncertainty remains, return a gated recommendation instead of false precision.
+
+    ## Example commands
+
+    ```shell
+    $codex-startup-lifecycle-mapper "Run codex startup lifecycle mapper on my current project context"
+    python scripts/run.py --input examples/input-example.md
+    python scripts/validate.py --file examples/output-example.md
+    ```
+
+    ## Advanced usage
+
+    - Run in phased mode: discovery -> draft -> validation -> final.
+    - Compare two decision branches and include tradeoff table.
+    - Enforce stricter gates for production/release-critical use.

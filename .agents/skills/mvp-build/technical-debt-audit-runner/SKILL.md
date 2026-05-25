@@ -1,62 +1,90 @@
 ---
 name: technical-debt-audit-runner
-description: Identify fragile areas, lack of tests and architectural drift before launch.
+description: Advanced operational skill for technical-debt-audit-runner.
+read_when:
+  - When working in mvp-build workflows
+  - When user asks for technical debt audit runner
+  - When assessing risks or quality
+  - When remediation priorities are needed
+metadata: {"codex": {"level": "advanced", "category": "mvp-build", "runtime": "markdown+python", "requires": {"files": ["templates/", "scripts/", "examples/"]}}}
 ---
 
 # Technical Debt Audit Runner
 
-## Purpose
+    Advanced operational skill for technical-debt-audit-runner.
 
-Detect structural issues, drift and maintainability risks in the codebase early.  A rigorous audit surfaces areas likely to create bugs, slow down development or break the architecture, enabling you to plan remediation before launching or scaling.
+    ## Activation trigger
 
-## When to use
+    Use this skill when the user requests **technical debt audit runner** and needs a high-confidence, decision-ready outcome in **mvp-build**.
 
-Run this audit at regular intervals (e.g. every sprint) during MVP development and always before launch.  Repeat it after major refactors or when new contributors join the project.  Early detection of debt minimises costly fixes later.
+    ## Required inputs
 
-## Inputs
+    - Audit target (repo/module/system) and risk appetite.
+- Severity model (P0-P3) and remediation SLA expectations.
+- Security or quality policies that must be enforced.
+- Evidence sources (code, configs, logs, prior incidents).
 
-- Codebase overview, including repository structure and key modules.
-- Test coverage reports from unit, integration and end‑to‑end tests.
-- Architecture brief and coding standards to compare against.
-- List of dependencies and external services (optional).
+    ## Optional inputs
 
-## Process
+    - Previous outputs from this skill family.
+    - Team ownership map and delivery timeline.
+    - Explicit constraints for cost, risk, or compliance.
 
-1. **Run static analysis and linting.**  Use tools to detect code smells, high cyclomatic complexity, duplicated code, unused dependencies and inconsistent patterns.  Highlight files or functions with the highest complexity or change frequency.
-2. **Check architecture conformance.**  Compare the actual implementation against your architecture brief.  Identify violations such as business logic leaking into controllers, infrastructure modules importing domain modules, or unapproved libraries.  Note any new dependencies added without review.
-3. **Assess test coverage and reliability.**  Review coverage reports to find modules with low or zero test coverage.  Identify critical paths that lack integration or end‑to‑end tests.  Note any flaky tests or long execution times that could hinder CI/CD.
-4. **Review documentation and comments.**  Check whether modules have up‑to‑date docstrings, comments and context references.  Missing documentation can slow down onboarding and maintenance.
-5. **Classify technical debt.**  Categorise findings by severity (critical, high, medium, low) and type (architecture drift, complexity, missing tests, outdated dependencies).  Estimate the impact on user experience, performance, scalability and development velocity.
-6. **Prioritise remediation and plan.**  Suggest a remediation plan organised into sprints.  For each debt item, provide actionable steps (e.g. refactor payment module to separate domain logic, write tests for authentication controller, remove unused library X).  Balance quick wins with deeper refactors to avoid burnout.
+    ## Files to inspect
 
-## Output
+    - `concept/`, `templates/`, `examples/`, `scripts/` in this skill folder.
+    - User-referenced repository files and related modules.
+    - Prior artifacts that constrain or inform this decision.
 
-This skill produces a **technical debt audit report** that includes:
+    ## Execution workflow
 
-- A list of code smells, architecture violations, complexity hotspots and missing tests.
-- Severity ratings and potential impact for each finding.
-- Recommended remediation actions and a proposed sprint plan.
-- Summary charts or tables showing coverage gaps and risk distribution.
+    1. Inspect the target and collect objective evidence per risk domain.
+2. Classify findings by impact, exploitability/probability, and blast radius.
+3. Produce remediation plan with sequencing, owners, and verification steps.
+4. Flag quick wins vs structural fixes and quantify residual risk.
+5. Deliver a release recommendation (blocker/warn/pass) with rationale.
 
-## Quality checklist
+    ## Generated artifacts
 
-- [ ] Purpose is clear and specific
-- [ ] Inputs are identified and complete
-- [ ] Steps are actionable and unambiguous
-- [ ] Expected output is well defined
-- [ ] Failure modes are considered
+    - `outputs/audit-report.md`
+- `outputs/remediation-plan.md`
+- `outputs/retest-checklist.md`
 
-## Failure modes
+    ## Output contract
 
-- Running the audit only once, leading to accumulation of debt between reviews.
-- Ignoring architecture drift because “it works for now,” resulting in long‑term maintainability issues.
-- Treating all debt as equal priority, causing teams to fix low‑impact issues instead of critical risks.
+    Final response must include:
 
-## Example prompt
+    - Objective and scope boundaries.
+    - Inputs and assumptions used.
+    - Analysis and decision rationale.
+    - Artifact paths and summary.
+    - Validation result and residual risks.
+    - Next actions ordered by priority.
 
-```shell
-$technical-debt-audit-runner
-```
+    ## Validation checklist
 
+    - Required sections are complete and non-empty.
+- No placeholder content (`TODO`, `TBD`, `lorem`, `placeholder`).
+- Claims are traceable to provided inputs or inspected files.
+- Output includes explicit decisions, risks, and next steps.
 
+    ## Safety / failure rules
 
+    - Pause and ask for clarification if required inputs are missing or contradictory.
+- Do not invent metrics, user evidence, or repository facts.
+- Do not modify unrelated files or broaden scope silently.
+- If high-risk uncertainty remains, return a gated recommendation instead of false precision.
+
+    ## Example commands
+
+    ```shell
+    $technical-debt-audit-runner "Run technical debt audit runner on my current project context"
+    python scripts/run.py --input examples/input-example.md
+    python scripts/validate.py --file examples/output-example.md
+    ```
+
+    ## Advanced usage
+
+    - Run in phased mode: discovery -> draft -> validation -> final.
+    - Compare two decision branches and include tradeoff table.
+    - Enforce stricter gates for production/release-critical use.

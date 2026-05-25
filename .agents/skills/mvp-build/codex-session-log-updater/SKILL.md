@@ -1,61 +1,90 @@
 ---
 name: codex-session-log-updater
-description: Update project context after each Codex session to maintain an accurate trail of changes.
+description: Advanced operational skill for codex-session-log-updater.
+read_when:
+  - When working in mvp-build workflows
+  - When user asks for codex session log updater
+  - When the workflow is unclear
+  - When repeatable execution is needed
+metadata: {"codex": {"level": "advanced", "category": "mvp-build", "runtime": "markdown+python", "requires": {"files": ["templates/", "scripts/", "examples/"]}}}
 ---
 
 # Codex Session Log Updater
 
-## Purpose
+    Advanced operational skill for codex-session-log-updater.
 
-Maintain a reliable historical record of each Codex session.  By documenting changes, decisions and their rationale, you prevent context drift, reduce duplication of work and make it easier for humans and agents to follow the project’s evolution.
+    ## Activation trigger
 
-## When to use
+    Use this skill when the user requests **codex session log updater** and needs a high-confidence, decision-ready outcome in **mvp-build**.
 
-Use at the end of any session where Codex writes or modifies code.
+    ## Required inputs
 
-## Inputs
+    - Strategic objective and decision horizon.
+- Current constraints and bottlenecks.
+- Existing workflows, cadences, and ownership map.
+- Required outputs and success conditions.
 
-- Summary of changes made (files modified, functions added/removed, refactors)
-- Rationale for decisions and trade‑offs
-- Issues encountered, technical debt introduced, open questions
+    ## Optional inputs
 
-## Process
+    - Previous outputs from this skill family.
+    - Team ownership map and delivery timeline.
+    - Explicit constraints for cost, risk, or compliance.
 
-1. **Record session summary.**  At the end of the session, summarise what was accomplished: tasks completed, files modified, functions or modules added/removed, dependencies introduced, tests written and bugs fixed.
-2. **Document decisions.**  Append an entry to `DECISIONS.md` including the date, context, decision, alternatives considered, assumptions, evidence and rationale.  Note any trade‑offs (e.g. performance vs. simplicity) and deferred considerations.
-3. **Update project context.**  Update `PROJECT_CONTEXT.md` and `ARCHITECTURE.md` to reflect new modules, data models, API endpoints, configuration changes or constraints.  Ensure that comments in code and architecture docs remain consistent.
-4. **Flag technical debt and risks.**  Identify any shortcuts taken or areas requiring refactor.  Capture these items in a debt/backlog list along with suggested remediation priority.
-5. **List follow‑ups.**  Record open questions, blocked tasks, and planned next steps.  Assign owners or schedule subsequent Codex sessions to address them.
-6. **Commit and sync.**  Make sure all context files are saved and committed alongside code changes.  This ensures that future sessions have access to up‑to‑date context.
+    ## Files to inspect
 
-## Output
+    - `concept/`, `templates/`, `examples/`, `scripts/` in this skill folder.
+    - User-referenced repository files and related modules.
+    - Prior artifacts that constrain or inform this decision.
 
-This skill results in:
+    ## Execution workflow
 
-- Updated `DECISIONS.md` entries detailing decisions and their rationale.
-- Updated `PROJECT_CONTEXT.md` and `ARCHITECTURE.md` reflecting new components and constraints.
-- A documented list of technical debt items and follow‑up actions.
-- A summary log that can be referenced in subsequent sessions.
+    1. Convert broad objective into decision-ready workstreams.
+2. Define cadence, ownership, and measurable checkpoints.
+3. Generate an execution plan with dependencies and risk gates.
+4. Create artifacts for continuity (logs, briefs, review templates).
+5. Validate feasibility against timeline and resource limits.
 
-## Quality checklist
+    ## Generated artifacts
 
-- [ ] Purpose is clear and specific
-- [ ] Inputs are identified and complete
-- [ ] Steps are actionable and unambiguous
-- [ ] Expected output is well defined
-- [ ] Failure modes are considered
+    - `outputs/execution-plan.md`
+- `outputs/decision-log.md`
+- `outputs/review-cadence.md`
 
-## Failure modes
+    ## Output contract
 
-- Forgetting to document small decisions, which later become sources of confusion or rework.
-- Failing to update all relevant context files, resulting in inconsistent or outdated documentation.
-- Not flagging introduced technical debt, leading to accumulated structural risk.
+    Final response must include:
 
-## Example prompt
+    - Objective and scope boundaries.
+    - Inputs and assumptions used.
+    - Analysis and decision rationale.
+    - Artifact paths and summary.
+    - Validation result and residual risks.
+    - Next actions ordered by priority.
 
-```shell
-$codex-session-log-updater
-```
+    ## Validation checklist
 
+    - Required sections are complete and non-empty.
+- No placeholder content (`TODO`, `TBD`, `lorem`, `placeholder`).
+- Claims are traceable to provided inputs or inspected files.
+- Output includes explicit decisions, risks, and next steps.
 
+    ## Safety / failure rules
 
+    - Pause and ask for clarification if required inputs are missing or contradictory.
+- Do not invent metrics, user evidence, or repository facts.
+- Do not modify unrelated files or broaden scope silently.
+- If high-risk uncertainty remains, return a gated recommendation instead of false precision.
+
+    ## Example commands
+
+    ```shell
+    $codex-session-log-updater "Run codex session log updater on my current project context"
+    python scripts/run.py --input examples/input-example.md
+    python scripts/validate.py --file examples/output-example.md
+    ```
+
+    ## Advanced usage
+
+    - Run in phased mode: discovery -> draft -> validation -> final.
+    - Compare two decision branches and include tradeoff table.
+    - Enforce stricter gates for production/release-critical use.

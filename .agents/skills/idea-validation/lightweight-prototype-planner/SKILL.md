@@ -1,64 +1,90 @@
 ---
 name: lightweight-prototype-planner
-description: Define the smallest possible prototype that demonstrates the core value hypothesis.
+description: Advanced operational skill for lightweight-prototype-planner.
+read_when:
+  - When working in idea-validation workflows
+  - When user asks for lightweight prototype planner
+  - When planning and sequencing work
+  - When scope and decisions must be explicit
+metadata: {"codex": {"level": "advanced", "category": "idea-validation", "runtime": "markdown+python", "requires": {"files": ["templates/", "scripts/", "examples/"]}}}
 ---
 
 # Lightweight Prototype Planner
 
-## Purpose
+    Advanced operational skill for lightweight-prototype-planner.
 
-Design a **minimal, focused prototype** that validates your core value hypothesis without committing to full product development.  The aim is to test whether users value the proposed solution enough to use it, return to it and ultimately pay for it.
+    ## Activation trigger
 
-## When to use
+    Use this skill when the user requests **lightweight prototype planner** and needs a high-confidence, decision-ready outcome in **idea-validation**.
 
-Use this skill after your problem hypothesis has been sharpened and you have a tentative solution concept.  It should precede any production coding and can be repeated for subsequent hypotheses or segments.
+    ## Required inputs
 
-## Inputs
+    - Target user segment and context.
+- Current problem statement and assumptions.
+- Existing evidence (calls, notes, metrics, market signals).
+- Decision to make after this analysis.
 
-- Core user journey
-- Critical assumptions
-- Existing assets (if any)
+    ## Optional inputs
 
-## Process
+    - Previous outputs from this skill family.
+    - Team ownership map and delivery timeline.
+    - Explicit constraints for cost, risk, or compliance.
 
-1. **Define the core interaction.**  Based on your solution concept, identify the single most critical user interaction or workflow that embodies the value proposition.  This should be the activity that must be delightful or efficient for users to adopt the product.
-2. **List critical assumptions.**  Document what must be true for this interaction to succeed (e.g. users are willing to provide data, integrate with existing tools, or change their behaviour).  Ask AI to enumerate potential failure points and consequences if assumptions do not hold.
-3. **Select a prototyping method.**  Choose the lowest fidelity medium capable of demonstrating the core interaction: hand‑drawn wireframes, clickable mockups, Wizard‑of‑Oz prototypes where a human simulates backend functionality, or simple spreadsheets.  Avoid building full backend systems at this stage.
-4. **Scope minimal features.**  List only the screens, inputs and outputs necessary to support the core interaction.  Exclude non‑essential features such as dashboards, onboarding flows or authentication unless they are critical to test.
-5. **Define success criteria and feedback mechanisms.**  Clarify what constitutes success (e.g. user completes the task, expresses delight, indicates willingness to pay) and how you will measure it.  Plan to collect both qualitative feedback (comments, emotional reactions) and quantitative metrics (completion time, error rate).
-6. **Recruit and test.**  Identify at least five target users who match your persona and schedule prototype sessions.  Ask them to complete the core interaction while you observe and ask follow‑up questions.  Use AI to help automate outreach and scheduling if needed.
-7. **Synthesize and iterate.**  After testing, summarise findings, identify which assumptions were validated or invalidated, and decide whether to iterate, pivot or proceed to MVP development.
+    ## Files to inspect
 
-## Output
+    - `concept/`, `templates/`, `examples/`, `scripts/` in this skill folder.
+    - User-referenced repository files and related modules.
+    - Prior artifacts that constrain or inform this decision.
 
-This skill returns a **prototype plan** that includes:
+    ## Execution workflow
 
-- The identified core interaction and associated critical assumptions.
-- The chosen prototyping method and rationale.
-- A list of minimal features/screens required.
-- Defined success criteria and feedback collection methods.
-- A testing plan with target user profile and next steps after testing.
+    1. Normalize the request into falsifiable hypotheses and explicit assumptions.
+2. Build a confidence map per assumption (evidence strength, recency, bias risk).
+3. Identify evidence gaps and design the minimum validation loop.
+4. Generate ranked validation actions by learning-per-effort.
+5. Produce a go/no-go recommendation with clear conditions to revisit.
 
-## Quality checklist
+    ## Generated artifacts
 
-- [ ] Purpose is clear and specific
-- [ ] Inputs are identified and complete
-- [ ] Steps are actionable and unambiguous
-- [ ] Expected output is well defined
-- [ ] Failure modes are considered
+    - `outputs/hypothesis.md`
+- `outputs/assumption-map.md`
+- `outputs/validation-plan.md`
 
-## Failure modes
+    ## Output contract
 
-- Over‑scoping the prototype by including features unrelated to the core interaction.
-- Skipping the documentation of assumptions, leading to unclear learning goals.
-- Recruiting participants who do not match the target persona, resulting in misleading feedback.
-- Treating positive reactions from a handful of users as proof of product‑market fit.
+    Final response must include:
 
-## Example prompt
+    - Objective and scope boundaries.
+    - Inputs and assumptions used.
+    - Analysis and decision rationale.
+    - Artifact paths and summary.
+    - Validation result and residual risks.
+    - Next actions ordered by priority.
 
-```shell
-$lightweight-prototype-planner
-```
+    ## Validation checklist
 
+    - Required sections are complete and non-empty.
+- No placeholder content (`TODO`, `TBD`, `lorem`, `placeholder`).
+- Claims are traceable to provided inputs or inspected files.
+- Output includes explicit decisions, risks, and next steps.
 
+    ## Safety / failure rules
 
+    - Pause and ask for clarification if required inputs are missing or contradictory.
+- Do not invent metrics, user evidence, or repository facts.
+- Do not modify unrelated files or broaden scope silently.
+- If high-risk uncertainty remains, return a gated recommendation instead of false precision.
+
+    ## Example commands
+
+    ```shell
+    $lightweight-prototype-planner "Run lightweight prototype planner on my current project context"
+    python scripts/run.py --input examples/input-example.md
+    python scripts/validate.py --file examples/output-example.md
+    ```
+
+    ## Advanced usage
+
+    - Run in phased mode: discovery -> draft -> validation -> final.
+    - Compare two decision branches and include tradeoff table.
+    - Enforce stricter gates for production/release-critical use.

@@ -1,0 +1,28 @@
+{
+  "name": "competitive-landscape-mapper",
+  "category": "idea-validation",
+  "type": "planner",
+  "runtime": "markdown+python",
+  "description": "Identify and categorise direct, indirect and adjacent competitors.",
+  "inputs": [
+    "user_request",
+    "project_context",
+    "constraints"
+  ],
+  "outputs": [
+    "structured_markdown_output",
+    "validated_artifact"
+  ],
+  "scripts": {
+    "run": "scripts/run.py",
+    "validate": "scripts/validate.py"
+  },
+  "templates": [
+    "templates/output.md"
+  ],
+  "examples": {
+    "input": "examples/input-example.md",
+    "output": "examples/output-example.md"
+  },
+  "concept": "concept/CONCEPT.md"
+}

@@ -1,57 +1,90 @@
 ---
 name: project-context-file-generator
-description: Produce persistent context files for Codex such as AGENTS.md, PROJECT_CONTEXT.md and DECISIONS.md.
+description: Advanced operational skill for project-context-file-generator.
+read_when:
+  - When working in mvp-build workflows
+  - When user asks for project context file generator
+  - When a structured artifact must be generated
+  - When reusable documentation is required
+metadata: {"codex": {"level": "advanced", "category": "mvp-build", "runtime": "markdown+python", "requires": {"files": ["templates/", "scripts/", "examples/"]}}}
 ---
 
 # Project Context File Generator
 
-## Purpose
+    Advanced operational skill for project-context-file-generator.
 
-Create and maintain persistent project context files that Codex and human developers can rely on.  These files capture architecture, decisions, constraints, scope and agent instructions, reducing confusion and preventing architectural drift or duplication across sessions.
+    ## Activation trigger
 
-## When to use
+    Use this skill when the user requests **project context file generator** and needs a high-confidence, decision-ready outcome in **mvp-build**.
 
-Use this skill when you initialise a new repository, after a major architecture or scope change, or whenever context files become outdated.  It complements the session log updater by periodically consolidating information into authoritative documents.
+    ## Required inputs
 
-## Inputs
+    - Product objective and bounded scope.
+- Technical constraints (stack, infra, compliance).
+- Non-functional requirements (security, latency, reliability).
+- Dependencies and integration points.
 
-- The latest architecture brief (from the architecture generator skill).
-- Recent decision log entries summarising key product and technical choices.
-- Team roles and responsibilities (to define ownership and review processes).
-- MVP scope document and other context (optional but recommended).
+    ## Optional inputs
 
-## Process
+    - Previous outputs from this skill family.
+    - Team ownership map and delivery timeline.
+    - Explicit constraints for cost, risk, or compliance.
 
-1. **Generate/refresh `AGENTS.md`.**  Describe the purpose of the repository, the principles guiding Codex interactions (e.g. validating before building, maintaining context), coding standards and any agent roles (e.g. coding agent vs. review agent).  Include rules on how to update context files and how to handle failures or errors.
-2. **Generate/refresh `PROJECT_CONTEXT.md`.**  Summarise the current architecture (from your architecture brief), MVP scope, target user personas, user journeys, constraints, success metrics and known technical limitations.  This file acts as a high‑level briefing for new contributors or agents.
-3. **Update `DECISIONS.md`.**  Consolidate recent decision log entries into an ordered list.  For each decision include the date, context, decision statement, alternatives considered, assumptions, evidence, trade‑offs and outcome.  Remove outdated or superseded decisions while preserving historical context.
-4. **Generate or update other context files.**  If your repository uses additional documents (e.g. `MVP_SCOPE.md`, `ARCHITECTURE.md`), ensure they are referenced in `PROJECT_CONTEXT.md` and cross‑linked.
-5. **Persist the files.**  Save or overwrite the context files in the repository root or `.agents` folder.  Ensure they are version‑controlled so that future Codex sessions load the latest information.
-6. **Notify the team.**  Suggest notifying team members about updated context files so everyone uses the latest guidance.  Consider automating a check to ensure these files are present in subsequent sessions.
+    ## Files to inspect
 
-## Output
+    - `concept/`, `templates/`, `examples/`, `scripts/` in this skill folder.
+    - User-referenced repository files and related modules.
+    - Prior artifacts that constrain or inform this decision.
 
-This skill produces fresh versions of `AGENTS.md`, `PROJECT_CONTEXT.md` and `DECISIONS.md` (and other context files if provided).  Each file reflects the latest architecture, scope, decisions, principles and roles.  The output should also include a summary of what changed and recommendations for adoption.
+    ## Execution workflow
 
-## Quality checklist
+    1. Translate product goals into architecture/spec decisions with explicit tradeoffs.
+2. Map components, boundaries, data contracts, and failure paths.
+3. Define execution slices (MVP-now vs later) and risk controls.
+4. Generate implementation-ready artifacts and acceptance criteria.
+5. Validate internal consistency across scope, architecture, and delivery plan.
 
-- [ ] Purpose is clear and specific
-- [ ] Inputs are identified and complete
-- [ ] Steps are actionable and unambiguous
-- [ ] Expected output is well defined
-- [ ] Failure modes are considered
+    ## Generated artifacts
 
-## Failure modes
+    - `outputs/brief.md`
+- `outputs/component-boundaries.md`
+- `outputs/acceptance-criteria.md`
 
-- Allowing context files to become stale, leading Codex to act on outdated assumptions.
-- Omitting key decisions or architecture changes, causing inconsistent design choices.
-- Storing context files outside version control, making it hard to track changes over time.
+    ## Output contract
 
-## Example prompt
+    Final response must include:
 
-```shell
-$project-context-file-generator
-```
+    - Objective and scope boundaries.
+    - Inputs and assumptions used.
+    - Analysis and decision rationale.
+    - Artifact paths and summary.
+    - Validation result and residual risks.
+    - Next actions ordered by priority.
 
+    ## Validation checklist
 
+    - Required sections are complete and non-empty.
+- No placeholder content (`TODO`, `TBD`, `lorem`, `placeholder`).
+- Claims are traceable to provided inputs or inspected files.
+- Output includes explicit decisions, risks, and next steps.
 
+    ## Safety / failure rules
+
+    - Pause and ask for clarification if required inputs are missing or contradictory.
+- Do not invent metrics, user evidence, or repository facts.
+- Do not modify unrelated files or broaden scope silently.
+- If high-risk uncertainty remains, return a gated recommendation instead of false precision.
+
+    ## Example commands
+
+    ```shell
+    $project-context-file-generator "Run project context file generator on my current project context"
+    python scripts/run.py --input examples/input-example.md
+    python scripts/validate.py --file examples/output-example.md
+    ```
+
+    ## Advanced usage
+
+    - Run in phased mode: discovery -> draft -> validation -> final.
+    - Compare two decision branches and include tradeoff table.
+    - Enforce stricter gates for production/release-critical use.

@@ -1,60 +1,90 @@
 ---
 name: post-interview-synthesis-generator
-description: Turn raw interview notes into actionable insights, patterns and contradictions.
+description: Advanced operational skill for post-interview-synthesis-generator.
+read_when:
+  - When working in idea-validation workflows
+  - When user asks for post interview synthesis generator
+  - When a structured artifact must be generated
+  - When reusable documentation is required
+metadata: {"codex": {"level": "advanced", "category": "idea-validation", "runtime": "markdown+python", "requires": {"files": ["templates/", "scripts/", "examples/"]}}}
 ---
 
-# Post‑Interview Synthesis Generator
+# Post Interview Synthesis Generator
 
-## Purpose
+    Advanced operational skill for post-interview-synthesis-generator.
 
-Transform raw interview notes into actionable insights.  By identifying patterns, contradictions and surprises, this synthesis helps you evaluate whether your problem and solution hypotheses hold up and where to adjust.  It also surfaces gaps and new questions to explore in subsequent research.
+    ## Activation trigger
 
-## When to use
+    Use this skill when the user requests **post interview synthesis generator** and needs a high-confidence, decision-ready outcome in **idea-validation**.
 
-Run this skill after each set of interviews (e.g. 3–5 sessions).  It is especially important before making any pivot or committing to an MVP scope.  You can also rerun it as new interviews are added to update your evidence base.
+    ## Required inputs
 
-## Inputs
+    - Target user segment and context.
+- Current problem statement and assumptions.
+- Existing evidence (calls, notes, metrics, market signals).
+- Decision to make after this analysis.
 
-- Interview notes or transcripts
+    ## Optional inputs
 
-## Process
+    - Previous outputs from this skill family.
+    - Team ownership map and delivery timeline.
+    - Explicit constraints for cost, risk, or compliance.
 
-1. **Aggregate and clean notes.**  Collect all interview notes or transcripts into one document.  Highlight direct quotes related to pain points, existing workarounds, desired outcomes and any emotional signals (frustration, delight, indifference).
-2. **Identify themes and outliers.**  Group observations by topic (e.g. time spent, costs, tools, blockers).  Note which responses recur across multiple interviews versus outliers that might signal unique contexts or segments.
-3. **Map to hypotheses.**  For each key statement, annotate whether it **confirms**, **contradicts** or **surprises** relative to your problem and solution hypotheses.  Pay close attention to evidence that challenges your assumptions; don’t downplay it.
-4. **Ask AI for synthesis.**  Have AI summarise patterns, contradictions and surprising findings across interviews.  Ask for potential explanations for outliers and how they might indicate different segments or job‑to‑be‑done.
-5. **Evidence weighting.**  After every five interviews, request a list of all evidence that supports or challenges your hypotheses.  Ask whether positive/negative evidence is skewed by selection bias or sample size, and adjust your weighting accordingly.
-6. **Define next actions.**  Based on the synthesis, produce a ranked list of top insights, hypotheses to refine, and specific questions to probe in the next round of research.  Highlight any new segments or pain points discovered.
+    ## Files to inspect
 
-## Output
+    - `concept/`, `templates/`, `examples/`, `scripts/` in this skill folder.
+    - User-referenced repository files and related modules.
+    - Prior artifacts that constrain or inform this decision.
 
-This skill returns a **post‑interview synthesis report** containing:
+    ## Execution workflow
 
-- Key themes and supporting quotes across all interviews.
-- A table of evidence confirming, contradicting and surprising relative to your hypotheses.
-- Analysis of outliers and potential segment differences.
-- A list of top insights, revised hypotheses and next research questions.
+    1. Normalize the request into falsifiable hypotheses and explicit assumptions.
+2. Build a confidence map per assumption (evidence strength, recency, bias risk).
+3. Identify evidence gaps and design the minimum validation loop.
+4. Generate ranked validation actions by learning-per-effort.
+5. Produce a go/no-go recommendation with clear conditions to revisit.
 
-## Quality checklist
+    ## Generated artifacts
 
-- [ ] Purpose is clear and specific
-- [ ] Inputs are identified and complete
-- [ ] Steps are actionable and unambiguous
-- [ ] Expected output is well defined
-- [ ] Failure modes are considered
+    - `outputs/hypothesis.md`
+- `outputs/assumption-map.md`
+- `outputs/validation-plan.md`
 
-## Failure modes
+    ## Output contract
 
-- Ignoring contradictory evidence because it conflicts with the desired narrative.
-- Over‑weighting feedback from early adopters or friendly sources.
-- Failing to separate signals from noise when sample sizes are small.
-- Delaying synthesis, leading to memory bias or loss of context.
+    Final response must include:
 
-## Example prompt
+    - Objective and scope boundaries.
+    - Inputs and assumptions used.
+    - Analysis and decision rationale.
+    - Artifact paths and summary.
+    - Validation result and residual risks.
+    - Next actions ordered by priority.
 
-```shell
-$post-interview-synthesis-generator
-```
+    ## Validation checklist
 
+    - Required sections are complete and non-empty.
+- No placeholder content (`TODO`, `TBD`, `lorem`, `placeholder`).
+- Claims are traceable to provided inputs or inspected files.
+- Output includes explicit decisions, risks, and next steps.
 
+    ## Safety / failure rules
 
+    - Pause and ask for clarification if required inputs are missing or contradictory.
+- Do not invent metrics, user evidence, or repository facts.
+- Do not modify unrelated files or broaden scope silently.
+- If high-risk uncertainty remains, return a gated recommendation instead of false precision.
+
+    ## Example commands
+
+    ```shell
+    $post-interview-synthesis-generator "Run post interview synthesis generator on my current project context"
+    python scripts/run.py --input examples/input-example.md
+    python scripts/validate.py --file examples/output-example.md
+    ```
+
+    ## Advanced usage
+
+    - Run in phased mode: discovery -> draft -> validation -> final.
+    - Compare two decision branches and include tradeoff table.
+    - Enforce stricter gates for production/release-critical use.

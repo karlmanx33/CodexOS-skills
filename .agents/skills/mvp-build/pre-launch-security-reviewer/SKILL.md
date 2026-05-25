@@ -1,65 +1,90 @@
 ---
 name: pre-launch-security-reviewer
-description: Audit authentication, input validation, API exposure and secrets before launching.
+description: Advanced operational skill for pre-launch-security-reviewer.
+read_when:
+  - When working in mvp-build workflows
+  - When user asks for pre launch security reviewer
+  - When assessing risks or quality
+  - When remediation priorities are needed
+metadata: {"codex": {"level": "advanced", "category": "mvp-build", "runtime": "markdown+python", "requires": {"files": ["templates/", "scripts/", "examples/"]}}}
 ---
 
-# Pre‑Launch Security Reviewer
+# Pre Launch Security Reviewer
 
-## Purpose
+    Advanced operational skill for pre-launch-security-reviewer.
 
-Audit the MVP for common security vulnerabilities before any external user interacts with it.  AI‑generated code often lacks security hardening, so this review identifies authentication weaknesses, injection risks, data exposure and secret leakage and recommends remediation.
+    ## Activation trigger
 
-## When to use
+    Use this skill when the user requests **pre launch security reviewer** and needs a high-confidence, decision-ready outcome in **mvp-build**.
 
-Invoke this skill **before** your MVP or any new feature goes live to beta testers or production.  It should also be run after significant architectural changes or dependency upgrades.
+    ## Required inputs
 
-## Inputs
+    - Audit target (repo/module/system) and risk appetite.
+- Severity model (P0-P3) and remediation SLA expectations.
+- Security or quality policies that must be enforced.
+- Evidence sources (code, configs, logs, prior incidents).
 
-- Architecture brief or diagram detailing components, data flows and trust boundaries.
-- List of API endpoints, their HTTP methods and parameters.
-- Inventory of third‑party services, libraries and dependencies.
-- Configuration files and environment variables (to identify secrets).
+    ## Optional inputs
 
-## Process
+    - Previous outputs from this skill family.
+    - Team ownership map and delivery timeline.
+    - Explicit constraints for cost, risk, or compliance.
 
-1. **Assess authentication and authorization.**  Examine how users are authenticated (passwords, OAuth, JWT, etc.), how sessions are managed and how roles/permissions are enforced.  Ensure tokens expire appropriately and session fixation attacks are mitigated.
-2. **Inspect input validation and output encoding.**  Identify all user‑supplied inputs and ensure they are validated and sanitised.  Check for SQL/NoSQL injection, command injection, cross‑site scripting (XSS), deserialisation vulnerabilities and cross‑site request forgery (CSRF).
-3. **Analyse API surface.**  Review each endpoint to ensure it exposes only necessary data.  Validate that sensitive fields (user PII, tokens, internal IDs) are not leaked.  Check for proper rate limiting and error handling to prevent enumeration attacks.
-4. **Check secret management.**  Search the codebase and configuration for hard‑coded secrets, API keys, database credentials and private keys.  Ensure secrets are stored securely (e.g. environment variables, secret managers) and rotated regularly.
-5. **Evaluate third‑party dependencies.**  Use a dependency scanner to identify known vulnerabilities (e.g. CVEs) in frameworks and libraries.  Confirm that third‑party services comply with your security requirements.
-6. **Review logging and monitoring.**  Ensure that security events (failed logins, permission escalations, error conditions) are logged and monitored.  Confirm logs do not contain sensitive data and that an incident response plan exists.
-7. **Prioritise and recommend remediation.**  For each issue, assign a severity level based on impact and likelihood.  Provide specific remediation steps, such as implementing input sanitisation libraries, adding middleware, refactoring authentication flows or updating dependencies.
-8. **Document compliance considerations.**  If handling personal data, note any regulatory requirements (e.g. GDPR) and prepare checklists for later stages (e.g. SOC 2).  These may not all be addressed in the MVP but should be acknowledged.
+    ## Files to inspect
 
-## Output
+    - `concept/`, `templates/`, `examples/`, `scripts/` in this skill folder.
+    - User-referenced repository files and related modules.
+    - Prior artifacts that constrain or inform this decision.
 
-This skill returns a **security audit report** containing:
+    ## Execution workflow
 
-- A list of identified vulnerabilities across authentication, input validation, API exposure, secrets and dependencies.
-- Severity ratings and rationale for each issue.
-- Recommended remediation steps and suggested tools or libraries.
-- A summary of overall risk and readiness to launch.
-- Notes on compliance considerations for future stages.
+    1. Inspect the target and collect objective evidence per risk domain.
+2. Classify findings by impact, exploitability/probability, and blast radius.
+3. Produce remediation plan with sequencing, owners, and verification steps.
+4. Flag quick wins vs structural fixes and quantify residual risk.
+5. Deliver a release recommendation (blocker/warn/pass) with rationale.
 
-## Quality checklist
+    ## Generated artifacts
 
-- [ ] Purpose is clear and specific
-- [ ] Inputs are identified and complete
-- [ ] Steps are actionable and unambiguous
-- [ ] Expected output is well defined
-- [ ] Failure modes are considered
+    - `outputs/audit-report.md`
+- `outputs/remediation-plan.md`
+- `outputs/retest-checklist.md`
 
-## Failure modes
+    ## Output contract
 
-- Assuming AI‑generated code is secure by default and skipping the review.
-- Focusing only on code and ignoring configuration, infrastructure and third‑party risks.
-- Underestimating the impact of low‑probability but high‑impact vulnerabilities.
+    Final response must include:
 
-## Example prompt
+    - Objective and scope boundaries.
+    - Inputs and assumptions used.
+    - Analysis and decision rationale.
+    - Artifact paths and summary.
+    - Validation result and residual risks.
+    - Next actions ordered by priority.
 
-```shell
-$pre-launch-security-reviewer
-```
+    ## Validation checklist
 
+    - Required sections are complete and non-empty.
+- No placeholder content (`TODO`, `TBD`, `lorem`, `placeholder`).
+- Claims are traceable to provided inputs or inspected files.
+- Output includes explicit decisions, risks, and next steps.
 
+    ## Safety / failure rules
 
+    - Pause and ask for clarification if required inputs are missing or contradictory.
+- Do not invent metrics, user evidence, or repository facts.
+- Do not modify unrelated files or broaden scope silently.
+- If high-risk uncertainty remains, return a gated recommendation instead of false precision.
+
+    ## Example commands
+
+    ```shell
+    $pre-launch-security-reviewer "Run pre launch security reviewer on my current project context"
+    python scripts/run.py --input examples/input-example.md
+    python scripts/validate.py --file examples/output-example.md
+    ```
+
+    ## Advanced usage
+
+    - Run in phased mode: discovery -> draft -> validation -> final.
+    - Compare two decision branches and include tradeoff table.
+    - Enforce stricter gates for production/release-critical use.

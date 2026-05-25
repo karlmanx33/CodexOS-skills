@@ -1,68 +1,90 @@
 ---
 name: mvp-architecture-brief-generator
-description: Create a clear architecture brief before writing or modifying production code.
+description: Advanced operational skill for mvp-architecture-brief-generator.
+read_when:
+  - When working in mvp-build workflows
+  - When user asks for mvp architecture brief generator
+  - When a structured artifact must be generated
+  - When reusable documentation is required
+metadata: {"codex": {"level": "advanced", "category": "mvp-build", "runtime": "markdown+python", "requires": {"files": ["templates/", "scripts/", "examples/"]}}}
 ---
 
-# MVP Architecture Brief Generator
+# Mvp Architecture Brief Generator
 
-## Purpose
+    Advanced operational skill for mvp-architecture-brief-generator.
 
-Define a lightweight, yet robust architecture for your MVP.  The brief captures core workflows, stack choices, folder structure, data models and constraints.  It acts as a persistent context file that guides implementation and prevents random architectural drift.
+    ## Activation trigger
 
-## When to use
+    Use this skill when the user requests **mvp architecture brief generator** and needs a high-confidence, decision-ready outcome in **mvp-build**.
 
-Generate this brief **before** any significant coding begins—whether building the initial MVP or adding a major capability that changes infrastructure.  Update it whenever architectural decisions change or new constraints emerge.
+    ## Required inputs
 
-## Inputs
+    - Product objective and bounded scope.
+- Technical constraints (stack, infra, compliance).
+- Non-functional requirements (security, latency, reliability).
+- Dependencies and integration points.
 
-- Product idea and MVP scope document.
-- Expected usage (number of users, expected load, data volume).
-- Preferred or existing tech stack, if any.
-- Non‑functional requirements such as latency targets, data residency, compliance needs.
+    ## Optional inputs
 
-## Process
+    - Previous outputs from this skill family.
+    - Team ownership map and delivery timeline.
+    - Explicit constraints for cost, risk, or compliance.
 
-1. **Describe core workflows.**  Capture the primary user journeys and system interactions that the MVP must support.  Identify services, data stores and integrations involved.
-2. **Choose stack and services.**  Select the minimal technology stack (frameworks, databases, message queues, hosting) that supports the core workflows.  Justify choices based on scalability, ease of development and team familiarity.  Note any external services or APIs required.
-3. **Define architecture components.**  Outline key modules (e.g. web API layer, domain logic, persistence layer), their responsibilities and how they interact.  Draw a high‑level component diagram if helpful.
-4. **Specify folder and module structure.**  Define the repository layout (e.g. `src/`, `tests/`, `configs/`, domain subfolders) and naming conventions.  Include guidelines on module boundaries and dependency direction (e.g. domain modules should not import infrastructure modules).
-5. **Clarify data models and API boundaries.**  Describe entities, their relationships and how data will flow through APIs.  Define versioning strategy and contract boundaries to avoid breaking changes.
-6. **State constraints and trade‑offs.**  Document technical constraints (languages, frameworks, libraries to avoid), performance targets, known limitations and trade‑offs accepted (e.g. using a monolith for speed of iteration).  List explicit non‑goals, i.e. what **not** to build yet, such as multi‑region deployment, microservices, or advanced analytics.
-7. **Outline security considerations.**  Include authentication/authorization approach, data encryption, input validation, and secure storage of secrets.  Reference your pre‑launch security review skill for details.
-8. **Persist the brief.**  Save this document as `ARCHITECTURE.md` or similar in the project context.  It should serve as a living reference for all Codex sessions and human developers, and must be updated as the architecture evolves.
+    ## Files to inspect
 
-## Output
+    - `concept/`, `templates/`, `examples/`, `scripts/` in this skill folder.
+    - User-referenced repository files and related modules.
+    - Prior artifacts that constrain or inform this decision.
 
-This skill returns an **architecture brief** comprising:
+    ## Execution workflow
 
-- A summary of core workflows and selected stack.
-- A high‑level architecture diagram or description of components.
-- Recommended folder and module structure.
-- Data model overview and API boundary definitions.
-- Constraints, trade‑offs and non‑goals.
-- Security notes and compliance considerations.
-- Instructions on where to store and maintain the brief in your repository.
+    1. Translate product goals into architecture/spec decisions with explicit tradeoffs.
+2. Map components, boundaries, data contracts, and failure paths.
+3. Define execution slices (MVP-now vs later) and risk controls.
+4. Generate implementation-ready artifacts and acceptance criteria.
+5. Validate internal consistency across scope, architecture, and delivery plan.
 
-## Quality checklist
+    ## Generated artifacts
 
-- [ ] Purpose is clear and specific
-- [ ] Inputs are identified and complete
-- [ ] Steps are actionable and unambiguous
-- [ ] Expected output is well defined
-- [ ] Failure modes are considered
+    - `outputs/brief.md`
+- `outputs/component-boundaries.md`
+- `outputs/acceptance-criteria.md`
 
-## Failure modes
+    ## Output contract
 
-- Over‑engineering by adopting complex architectures (microservices, event sourcing) too early.
-- Omitting security or data privacy considerations, leaving the MVP vulnerable.
-- Failing to update the brief after making changes, leading to context drift.
-- Ignoring the brief in subsequent Codex sessions, resulting in inconsistent patterns.
+    Final response must include:
 
-## Example prompt
+    - Objective and scope boundaries.
+    - Inputs and assumptions used.
+    - Analysis and decision rationale.
+    - Artifact paths and summary.
+    - Validation result and residual risks.
+    - Next actions ordered by priority.
 
-```shell
-$mvp-architecture-brief-generator
-```
+    ## Validation checklist
 
+    - Required sections are complete and non-empty.
+- No placeholder content (`TODO`, `TBD`, `lorem`, `placeholder`).
+- Claims are traceable to provided inputs or inspected files.
+- Output includes explicit decisions, risks, and next steps.
 
+    ## Safety / failure rules
 
+    - Pause and ask for clarification if required inputs are missing or contradictory.
+- Do not invent metrics, user evidence, or repository facts.
+- Do not modify unrelated files or broaden scope silently.
+- If high-risk uncertainty remains, return a gated recommendation instead of false precision.
+
+    ## Example commands
+
+    ```shell
+    $mvp-architecture-brief-generator "Run mvp architecture brief generator on my current project context"
+    python scripts/run.py --input examples/input-example.md
+    python scripts/validate.py --file examples/output-example.md
+    ```
+
+    ## Advanced usage
+
+    - Run in phased mode: discovery -> draft -> validation -> final.
+    - Compare two decision branches and include tradeoff table.
+    - Enforce stricter gates for production/release-critical use.

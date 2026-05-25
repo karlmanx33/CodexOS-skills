@@ -1,62 +1,90 @@
 ---
 name: founder-operating-system-designer
-description: Design a personal operating system for founders: decision logs, routines and ownership.
+description: Advanced operational skill for founder-operating-system-designer.
+read_when:
+  - When working in founder-os workflows
+  - When user asks for founder operating system designer
+  - When the workflow is unclear
+  - When repeatable execution is needed
+metadata: {"codex": {"level": "advanced", "category": "founder-os", "runtime": "markdown+python", "requires": {"files": ["templates/", "scripts/", "examples/"]}}}
 ---
 
 # Founder Operating System Designer
 
-## Purpose
+    Advanced operational skill for founder-operating-system-designer.
 
-Define a structured personal operating system (OS) for the founder so they can operate as an **orchestrator** rather than a bottleneck.  A robust OS captures decisions and their rationale, establishes cadences for review and ensures that tasks are either delegated, automated or eliminated.
+    ## Activation trigger
 
-## When to use
+    Use this skill when the user requests **founder operating system designer** and needs a high-confidence, decision-ready outcome in **founder-os**.
 
-Use this skill when launching a new venture, team or project.  Revisit it whenever the scope of the founder’s role changes (e.g. after fundraising, hiring or shifting to a new product stage) to prevent role creep and burnout.
+    ## Required inputs
 
-## Inputs
+    - Strategic objective and decision horizon.
+- Current constraints and bottlenecks.
+- Existing workflows, cadences, and ownership map.
+- Required outputs and success conditions.
 
-- List of current founder responsibilities
-- Existing processes and routines
+    ## Optional inputs
 
-## Process
+    - Previous outputs from this skill family.
+    - Team ownership map and delivery timeline.
+    - Explicit constraints for cost, risk, or compliance.
 
-1. **Map responsibilities.**  List all domains in which the founder currently works: product decisions, research, coding, sales, fundraising, hiring, operations, support, etc.  Identify tasks that only the founder can do versus those that could be delegated or automated.
-2. **Design decision logs.**  Create a template for logging important decisions.  Each entry should include the date, context, decision, alternatives considered, assumptions, evidence, risks, and chosen rationale.  Saving this in a persistent context (e.g. `DECISIONS.md`) helps AI and humans stay aligned and reduces re‑litigation of past choices.
-3. **Set review cadences.**  Establish a weekly review to track progress, update priorities and surface bottlenecks.  This includes a metrics brief, progress summary, key learnings and next actions.  Schedule monthly or quarterly retrospectives to realign with long‑term strategy.
-4. **Create a delegation and automation matrix.**  For each responsibility, decide whether to **own**, **delegate**, **automate** or **eliminate**.  Use AI agents or workflow automation to handle repetitive tasks (e.g. outreach, report generation) and delegate to team members when tasks require human judgement but not founder involvement.
-5. **Document rituals and tools.**  Define the rituals (daily standups, weekly sprint planning, monthly board updates) and the tools (project management, documentation, communication) you will use.  Ensure everyone knows where to find context files and how to update them.
-6. **Monitor and evolve.**  Periodically review whether the OS is working.  Adjust decision log structure, cadences or delegation rules as the company scales.
+    ## Files to inspect
 
-## Output
+    - `concept/`, `templates/`, `examples/`, `scripts/` in this skill folder.
+    - User-referenced repository files and related modules.
+    - Prior artifacts that constrain or inform this decision.
 
-This skill returns a **founder operating system blueprint** containing:
+    ## Execution workflow
 
-- A mapped list of founder responsibilities with ownership/delegation/automation decisions.
-- A decision log template and guidance on where to store it.
-- Weekly and monthly review agendas and recommended metrics to track.
-- A delegation and automation matrix.
-- Documentation guidelines and suggested tools for maintaining context.
+    1. Convert broad objective into decision-ready workstreams.
+2. Define cadence, ownership, and measurable checkpoints.
+3. Generate an execution plan with dependencies and risk gates.
+4. Create artifacts for continuity (logs, briefs, review templates).
+5. Validate feasibility against timeline and resource limits.
 
-## Quality checklist
+    ## Generated artifacts
 
-- [ ] Purpose is clear and specific
-- [ ] Inputs are identified and complete
-- [ ] Steps are actionable and unambiguous
-- [ ] Expected output is well defined
-- [ ] Failure modes are considered
+    - `outputs/execution-plan.md`
+- `outputs/decision-log.md`
+- `outputs/review-cadence.md`
 
-## Failure modes
+    ## Output contract
 
-- Keeping all responsibilities, resulting in founder bottlenecks and burnout.
-- Failing to record decisions, causing context loss and repeated debates.
-- Setting cadences but not following them, leading to drifting priorities.
-- Delegating without clear expectations or authority, causing confusion and rework.
+    Final response must include:
 
-## Example prompt
+    - Objective and scope boundaries.
+    - Inputs and assumptions used.
+    - Analysis and decision rationale.
+    - Artifact paths and summary.
+    - Validation result and residual risks.
+    - Next actions ordered by priority.
 
-```shell
-$founder-operating-system-designer
-```
+    ## Validation checklist
 
+    - Required sections are complete and non-empty.
+- No placeholder content (`TODO`, `TBD`, `lorem`, `placeholder`).
+- Claims are traceable to provided inputs or inspected files.
+- Output includes explicit decisions, risks, and next steps.
 
+    ## Safety / failure rules
 
+    - Pause and ask for clarification if required inputs are missing or contradictory.
+- Do not invent metrics, user evidence, or repository facts.
+- Do not modify unrelated files or broaden scope silently.
+- If high-risk uncertainty remains, return a gated recommendation instead of false precision.
+
+    ## Example commands
+
+    ```shell
+    $founder-operating-system-designer "Run founder operating system designer on my current project context"
+    python scripts/run.py --input examples/input-example.md
+    python scripts/validate.py --file examples/output-example.md
+    ```
+
+    ## Advanced usage
+
+    - Run in phased mode: discovery -> draft -> validation -> final.
+    - Compare two decision branches and include tradeoff table.
+    - Enforce stricter gates for production/release-critical use.

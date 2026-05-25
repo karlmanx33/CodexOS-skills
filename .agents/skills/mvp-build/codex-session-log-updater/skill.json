@@ -1,0 +1,28 @@
+{
+  "name": "codex-session-log-updater",
+  "category": "mvp-build",
+  "type": "workflow",
+  "runtime": "markdown+python",
+  "description": "Update project context after each Codex session to maintain an accurate trail of changes.",
+  "inputs": [
+    "user_request",
+    "project_context",
+    "constraints"
+  ],
+  "outputs": [
+    "structured_markdown_output",
+    "validated_artifact"
+  ],
+  "scripts": {
+    "run": "scripts/run.py",
+    "validate": "scripts/validate.py"
+  },
+  "templates": [
+    "templates/output.md"
+  ],
+  "examples": {
+    "input": "examples/input-example.md",
+    "output": "examples/output-example.md"
+  },
+  "concept": "concept/CONCEPT.md"
+}

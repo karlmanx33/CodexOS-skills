@@ -93,3 +93,22 @@ Pull requests are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) for how to pr
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## Operational skill structure
+
+Each skill now follows an operational package standard:
+
+- `SKILL.md` operational instructions for Codex execution.
+- `concept/` preserves original concept and transformation notes.
+- `templates/` reusable output templates.
+- `scripts/` local run/validate scripts.
+- `examples/` concrete usage and output examples.
+- `tests/` minimum structure validation.
+- `skill.json` machine-readable manifest.
+
+Run locally:
+
+```bash
+python tools/skill_auditor.py
+python tools/skill_index_generator.py
+python tools/skill_runner.py <skill-name> --input .agents/skills/<category>/<skill-name>/examples/input-example.md
+```

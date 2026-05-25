@@ -57,8 +57,8 @@ Before committing changes:
 
    * `†`
    * `screenshot`
-   * `?`
-   * `?`
+   * broken citation markers
+   * exported reference artifacts
 3. Check Markdown code fences.
 4. Check that example prompts match skill names.
 5. Check that all referenced paths exist.
@@ -74,3 +74,6 @@ Use short, clear commit messages:
 * `Clean placeholder references`
 
 Do not make unrelated changes in the same commit.
+
+
+

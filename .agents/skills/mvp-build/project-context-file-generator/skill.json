@@ -1,0 +1,28 @@
+{
+  "name": "project-context-file-generator",
+  "category": "mvp-build",
+  "type": "generator",
+  "runtime": "markdown+python",
+  "description": "Produce persistent context files for Codex such as AGENTS.md, PROJECT_CONTEXT.md and DECISIONS.md.",
+  "inputs": [
+    "user_request",
+    "project_context",
+    "constraints"
+  ],
+  "outputs": [
+    "structured_markdown_output",
+    "validated_artifact"
+  ],
+  "scripts": {
+    "run": "scripts/run.py",
+    "validate": "scripts/validate.py"
+  },
+  "templates": [
+    "templates/output.md"
+  ],
+  "examples": {
+    "input": "examples/input-example.md",
+    "output": "examples/output-example.md"
+  },
+  "concept": "concept/CONCEPT.md"
+}

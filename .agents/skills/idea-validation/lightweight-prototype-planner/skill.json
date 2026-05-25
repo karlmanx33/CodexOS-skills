@@ -1,0 +1,31 @@
+{
+  "name": "lightweight-prototype-planner",
+  "category": "idea-validation",
+  "type": "planner",
+  "runtime": "markdown+python",
+  "description": "Define the smallest possible prototype that demonstrates the core value hypothesis.",
+  "inputs": [
+    "user_request",
+    "project_context",
+    "constraints"
+  ],
+  "outputs": [
+    "structured_markdown_output",
+    "validated_artifact"
+  ],
+  "scripts": {
+    "run": "scripts/run.py",
+    "validate": "scripts/validate.py"
+  },
+  "templates": [
+    "templates/output.md",
+    "templates/hypothesis.template.md",
+    "templates/assumption-map.template.md",
+    "templates/research-plan.template.md"
+  ],
+  "examples": {
+    "input": "examples/input-example.md",
+    "output": "examples/output-example.md"
+  },
+  "concept": "concept/CONCEPT.md"
+}

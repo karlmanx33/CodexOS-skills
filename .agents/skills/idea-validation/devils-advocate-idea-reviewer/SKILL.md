@@ -1,59 +1,90 @@
 ---
 name: devils-advocate-idea-reviewer
-description: Stress‑test an idea by attacking it from all angles and surfacing weaknesses.
+description: Advanced operational skill for devils-advocate-idea-reviewer.
+read_when:
+  - When working in idea-validation workflows
+  - When user asks for devils advocate idea reviewer
+  - When assessing risks or quality
+  - When remediation priorities are needed
+metadata: {"codex": {"level": "advanced", "category": "idea-validation", "runtime": "markdown+python", "requires": {"files": ["templates/", "scripts/", "examples/"]}}}
 ---
 
-# Devil’s Advocate Idea Reviewer
+# Devils Advocate Idea Reviewer
 
-## Purpose
+    Advanced operational skill for devils-advocate-idea-reviewer.
 
-Combat optimism bias by deliberately seeking evidence that the idea could fail.  This skill forces you to challenge feasibility, desirability and viability by surfacing negative signals, failed precedents and inconvenient truths that supportive research often overlooks.
+    ## Activation trigger
 
-## When to use
+    Use this skill when the user requests **devils advocate idea reviewer** and needs a high-confidence, decision-ready outcome in **idea-validation**.
 
-Run this review after sharpening your problem hypothesis and before making major investments of time or money.  Re‑run it whenever new information arrives, a competitor moves, or a key assumption is questioned.  Devil’s advocate thinking is not a one‑off; it should recur at every stage of the lifecycle to keep you grounded.
+    ## Required inputs
 
-## Inputs
+    - Audit target (repo/module/system) and risk appetite.
+- Severity model (P0-P3) and remediation SLA expectations.
+- Security or quality policies that must be enforced.
+- Evidence sources (code, configs, logs, prior incidents).
 
-- Problem hypothesis
-- Summary of supporting evidence
+    ## Optional inputs
 
-## Process
+    - Previous outputs from this skill family.
+    - Team ownership map and delivery timeline.
+    - Explicit constraints for cost, risk, or compliance.
 
-1. **Surface failure modes.**  Brainstorm as many reasons as possible that the idea might fail: insufficient market demand, customer unwillingness to switch, entrenched competitors, commoditised technology, adverse regulation, or unscalable economics.
-2. **Seek disconfirming evidence.**  For each failure mode, use AI to uncover evidence that directly contradicts your optimistic assumptions.  This includes finding examples of similar startups that failed, negative customer reviews for analogous products, and market research predicting headwinds.
-3. **Analyse competitor advantage.**  Ask AI to argue why each known competitor could succeed instead of you.  Consider their resources, distribution, brand, data advantage and network effects.
-4. **Map risk to evidence.**  For every identified risk, specify what evidence would refute or mitigate it (e.g. customer testimonials, regulatory clarifications, partnership commitments).  Prioritise risks by potential impact and probability.
-5. **Propose validations.**  Design targeted experiments or research tasks to address each top‑priority risk.  These could include specific interview questions, A/B tests, small pilots, or deeper competitive analysis.
+    ## Files to inspect
 
-## Output
+    - `concept/`, `templates/`, `examples/`, `scripts/` in this skill folder.
+    - User-referenced repository files and related modules.
+    - Prior artifacts that constrain or inform this decision.
 
-This skill returns a **prioritised risk register**.  Each entry includes:
+    ## Execution workflow
 
-- The identified risk or failure mode.
-- A summary of disconfirming evidence or analogous failures.
-- The evidence needed to mitigate the risk.
-- A suggested validation approach (interview probe, experiment or desk research).
+    1. Inspect the target and collect objective evidence per risk domain.
+2. Classify findings by impact, exploitability/probability, and blast radius.
+3. Produce remediation plan with sequencing, owners, and verification steps.
+4. Flag quick wins vs structural fixes and quantify residual risk.
+5. Deliver a release recommendation (blocker/warn/pass) with rationale.
 
-## Quality checklist
+    ## Generated artifacts
 
-- [ ] Purpose is clear and specific
-- [ ] Inputs are identified and complete
-- [ ] Steps are actionable and unambiguous
-- [ ] Expected output is well defined
-- [ ] Failure modes are considered
+    - `outputs/audit-report.md`
+- `outputs/remediation-plan.md`
+- `outputs/retest-checklist.md`
 
-## Failure modes
+    ## Output contract
 
-- Confirmation bias: ignoring negative evidence that conflicts with the founder’s narrative.
-- Superficial competitor analysis that overlooks deeper structural advantages.
-- Conflating unlikely edge cases with high‑probability risks, leading to analysis paralysis.
+    Final response must include:
 
-## Example prompt
+    - Objective and scope boundaries.
+    - Inputs and assumptions used.
+    - Analysis and decision rationale.
+    - Artifact paths and summary.
+    - Validation result and residual risks.
+    - Next actions ordered by priority.
 
-```shell
-$devils-advocate-idea-reviewer
-```
+    ## Validation checklist
 
+    - Required sections are complete and non-empty.
+- No placeholder content (`TODO`, `TBD`, `lorem`, `placeholder`).
+- Claims are traceable to provided inputs or inspected files.
+- Output includes explicit decisions, risks, and next steps.
 
+    ## Safety / failure rules
 
+    - Pause and ask for clarification if required inputs are missing or contradictory.
+- Do not invent metrics, user evidence, or repository facts.
+- Do not modify unrelated files or broaden scope silently.
+- If high-risk uncertainty remains, return a gated recommendation instead of false precision.
+
+    ## Example commands
+
+    ```shell
+    $devils-advocate-idea-reviewer "Run devils advocate idea reviewer on my current project context"
+    python scripts/run.py --input examples/input-example.md
+    python scripts/validate.py --file examples/output-example.md
+    ```
+
+    ## Advanced usage
+
+    - Run in phased mode: discovery -> draft -> validation -> final.
+    - Compare two decision branches and include tradeoff table.
+    - Enforce stricter gates for production/release-critical use.

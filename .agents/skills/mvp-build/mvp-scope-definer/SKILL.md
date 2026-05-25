@@ -1,68 +1,90 @@
 ---
 name: mvp-scope-definer
-description: Decide what belongs in your MVP and what doesn’t to avoid scope creep.
+description: Advanced operational skill for mvp-scope-definer.
+read_when:
+  - When working in mvp-build workflows
+  - When user asks for mvp scope definer
+  - When planning and sequencing work
+  - When scope and decisions must be explicit
+metadata: {"codex": {"level": "advanced", "category": "mvp-build", "runtime": "markdown+python", "requires": {"files": ["templates/", "scripts/", "examples/"]}}}
 ---
 
-# MVP Scope Definer
+# Mvp Scope Definer
 
-## Purpose
+    Advanced operational skill for mvp-scope-definer.
 
-Create a clear, evidence‑based boundary around your MVP to ensure you build only what is necessary to validate the value, retention and monetisation hypotheses.  A disciplined scope keeps the team focused and prevents uncontrolled agentic scope creep.
+    ## Activation trigger
 
-## When to use
+    Use this skill when the user requests **mvp scope definer** and needs a high-confidence, decision-ready outcome in **mvp-build**.
 
-Use this skill when transitioning from research and prototype testing to building a functional MVP.  Revisit it whenever new evidence emerges or stakeholders push to add features.
+    ## Required inputs
 
-## Inputs
+    - Product objective and bounded scope.
+- Technical constraints (stack, infra, compliance).
+- Non-functional requirements (security, latency, reliability).
+- Dependencies and integration points.
 
-- List of desired features or capabilities gathered from user feedback and internal brainstorming.
-- Validated hypotheses (problem and solution statements) and evidence supporting them.
-- User feedback from interviews and prototype tests, highlighting the most painful problems and desired outcomes.
-- Constraints such as budget, time and technical limitations.
+    ## Optional inputs
 
-## Process
+    - Previous outputs from this skill family.
+    - Team ownership map and delivery timeline.
+    - Explicit constraints for cost, risk, or compliance.
 
-1. **Map features to hypotheses.**  For each desired feature, articulate which hypothesis or metric it is intended to test (value, retention, monetisation or referral).  Discard features that cannot be tied to a specific learning goal.
-2. **Prioritise by evidence.**  Categorise features into:
-   - **Must‑have:** directly test the core value hypothesis and provide the minimum path to deliver the promise.
-   - **Should‑have:** enhance learning but can be postponed until must‑haves prove valuable.
-   - **Nice‑to‑have:** enhancements or optimisations that do not affect early learning; defer until product‑market fit is evident.
-3. **Identify dependencies and sequencing.**  Map dependencies among features (e.g. authentication needed before payment) and determine the order of implementation.  Where possible, remove dependencies by simplifying features.
-4. **Define out‑of‑scope items.**  Explicitly list features and tasks that will **not** be included in the MVP.  Provide rationale tied to evidence or lack thereof.  This clarity helps push back on scope creep.
-5. **Set constraints and exit criteria.**  Define the metrics and signals that will indicate whether the MVP has achieved product‑market fit (e.g. retention rates, willingness to pay).  Note constraints such as maximum build time or budget.
-6. **Document the scope.**  Create a written `MVP_SCOPE.md` or similar context file describing the selected features, their rationale, sequencing, out‑of‑scope items, and success criteria.  Store this alongside your architecture and decision logs.
-7. **Review and iterate.**  Revisit the scope after each feedback cycle.  Adjust categories based on new evidence or changing hypotheses but maintain discipline against “zero‑friction” additions without supporting data.
+    ## Files to inspect
 
-## Output
+    - `concept/`, `templates/`, `examples/`, `scripts/` in this skill folder.
+    - User-referenced repository files and related modules.
+    - Prior artifacts that constrain or inform this decision.
 
-This skill outputs an **MVP scope document** including:
+    ## Execution workflow
 
-- Categorised list of features (must‑have, should‑have, nice‑to‑have) with rationale.
-- Feature sequencing and dependency map.
-- List of out‑of‑scope items and reasons for exclusion.
-- Constraints and exit criteria for validating product‑market fit.
-- Guidance on where to store and maintain the scope file.
+    1. Translate product goals into architecture/spec decisions with explicit tradeoffs.
+2. Map components, boundaries, data contracts, and failure paths.
+3. Define execution slices (MVP-now vs later) and risk controls.
+4. Generate implementation-ready artifacts and acceptance criteria.
+5. Validate internal consistency across scope, architecture, and delivery plan.
 
-## Quality checklist
+    ## Generated artifacts
 
-- [ ] Purpose is clear and specific
-- [ ] Inputs are identified and complete
-- [ ] Steps are actionable and unambiguous
-- [ ] Expected output is well defined
-- [ ] Failure modes are considered
+    - `outputs/brief.md`
+- `outputs/component-boundaries.md`
+- `outputs/acceptance-criteria.md`
 
-## Failure modes
+    ## Output contract
 
-- Including features based on personal preference rather than evidence from user research.
-- Treating market validation as complete after building a feature, rather than measuring actual user behaviour.
-- Allowing features to slip into the must‑have category without explicit rationale.
-- Failing to revisit the scope as new data emerges, leading to premature scaling or missing critical learning opportunities.
+    Final response must include:
 
-## Example prompt
+    - Objective and scope boundaries.
+    - Inputs and assumptions used.
+    - Analysis and decision rationale.
+    - Artifact paths and summary.
+    - Validation result and residual risks.
+    - Next actions ordered by priority.
 
-```shell
-$mvp-scope-definer
-```
+    ## Validation checklist
 
+    - Required sections are complete and non-empty.
+- No placeholder content (`TODO`, `TBD`, `lorem`, `placeholder`).
+- Claims are traceable to provided inputs or inspected files.
+- Output includes explicit decisions, risks, and next steps.
 
+    ## Safety / failure rules
 
+    - Pause and ask for clarification if required inputs are missing or contradictory.
+- Do not invent metrics, user evidence, or repository facts.
+- Do not modify unrelated files or broaden scope silently.
+- If high-risk uncertainty remains, return a gated recommendation instead of false precision.
+
+    ## Example commands
+
+    ```shell
+    $mvp-scope-definer "Run mvp scope definer on my current project context"
+    python scripts/run.py --input examples/input-example.md
+    python scripts/validate.py --file examples/output-example.md
+    ```
+
+    ## Advanced usage
+
+    - Run in phased mode: discovery -> draft -> validation -> final.
+    - Compare two decision branches and include tradeoff table.
+    - Enforce stricter gates for production/release-critical use.

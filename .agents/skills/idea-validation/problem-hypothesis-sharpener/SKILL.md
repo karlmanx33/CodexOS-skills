@@ -1,64 +1,90 @@
 ---
 name: problem-hypothesis-sharpener
-description: Turn vague startup ideas into precise, testable problem hypotheses.
+description: Advanced operational skill for problem-hypothesis-sharpener.
+read_when:
+  - When working in idea-validation workflows
+  - When user asks for problem hypothesis sharpener
+  - When the workflow is unclear
+  - When repeatable execution is needed
+metadata: {"codex": {"level": "advanced", "category": "idea-validation", "runtime": "markdown+python", "requires": {"files": ["templates/", "scripts/", "examples/"]}}}
 ---
 
 # Problem Hypothesis Sharpener
 
-## Purpose
+    Advanced operational skill for problem-hypothesis-sharpener.
 
-Transform a vague business idea into a precise, falsifiable problem hypothesis.  The goal is to articulate **who** has the problem, **how often** they experience it, **how severe** it is and **why existing solutions are inadequate**.  A well‑sharpened hypothesis anchors discovery and testing and prevents generic, non‑actionable assumptions.
+    ## Activation trigger
 
-## When to use
+    Use this skill when the user requests **problem hypothesis sharpener** and needs a high-confidence, decision-ready outcome in **idea-validation**.
 
-Invoke this skill at the start of the Idea Stage or anytime your understanding of the problem evolves.  It should be used **before** drafting interview questions, designing experiments or writing code, and revisited whenever new evidence surfaces that challenges your assumptions.
+    ## Required inputs
 
-## Inputs
+    - Target user segment and context.
+- Current problem statement and assumptions.
+- Existing evidence (calls, notes, metrics, market signals).
+- Decision to make after this analysis.
 
-- Initial idea description
-- Target user or segment
-- Existing problem statement (optional)
+    ## Optional inputs
 
-## Process
+    - Previous outputs from this skill family.
+    - Team ownership map and delivery timeline.
+    - Explicit constraints for cost, risk, or compliance.
 
-1. **Decompose the idea.** Identify all vague or hand‑wavy phrases in your initial problem description.  Ask yourself who is implied by “users,” what constitutes “too long,” and what evidence currently supports those claims.
-2. **Draft a specific hypothesis.** Rewrite the problem as a falsifiable statement that includes:
-   - The **precise persona** (e.g. “in‑house legal teams at mid‑market companies”).
-   - A **measurable pain** (e.g. “spend 3+ days per contract review cycle”).
-   - The **root cause** or workaround (e.g. “because redlines are managed across email threads instead of a version‑controlled document”).
-3. **Generate multiple versions.**  Produce a broad hypothesis, a narrower one and a testable interview hypothesis.  The broad version captures the general direction; the narrow version focuses on a specific segment; the interview version is short and designed to elicit agreement or disconfirmation in a conversation.
-4. **Identify assumptions and evidence.**  List your underlying assumptions (e.g. size of companies, legal team structure, current tools).  For each, specify what evidence would validate or invalidate it.  Use AI to act as a devil’s advocate, surfacing disconfirming evidence and negative signals you may have missed.
-5. **Plan research actions.**  Based on the riskiest assumptions, outline targeted research tasks (customer interviews, secondary research, competitor analyses) to gather supporting or contradictory data.
+    ## Files to inspect
 
-## Output
+    - `concept/`, `templates/`, `examples/`, `scripts/` in this skill folder.
+    - User-referenced repository files and related modules.
+    - Prior artifacts that constrain or inform this decision.
 
-This skill returns:
+    ## Execution workflow
 
-- A **refined problem hypothesis** expressed as a clear, falsifiable statement.
-- A **target user profile** describing the persona affected by the problem.
-- An **assumption map** listing key assumptions and the evidence required to test them.
-- A set of **research actions** to validate or invalidate the hypothesis.
+    1. Normalize the request into falsifiable hypotheses and explicit assumptions.
+2. Build a confidence map per assumption (evidence strength, recency, bias risk).
+3. Identify evidence gaps and design the minimum validation loop.
+4. Generate ranked validation actions by learning-per-effort.
+5. Produce a go/no-go recommendation with clear conditions to revisit.
 
-## Quality checklist
+    ## Generated artifacts
 
-- [ ] Purpose is clear and specific
-- [ ] Inputs are identified and complete
-- [ ] Steps are actionable and unambiguous
-- [ ] Expected output is well defined
-- [ ] Failure modes are considered
+    - `outputs/hypothesis.md`
+- `outputs/assumption-map.md`
+- `outputs/validation-plan.md`
 
-## Failure modes
+    ## Output contract
 
-- Choosing a persona that is too broad or too narrow, leading to irrelevant evidence.
-- Stopping at a single hypothesis without exploring alternative root causes.
-- Failing to document assumptions, which can cause hidden bias during validation.
-- Ignoring negative market signals or disconfirming evidence surfaced during the exercise.
+    Final response must include:
 
-## Example prompt
+    - Objective and scope boundaries.
+    - Inputs and assumptions used.
+    - Analysis and decision rationale.
+    - Artifact paths and summary.
+    - Validation result and residual risks.
+    - Next actions ordered by priority.
 
-```shell
-$problem-hypothesis-sharpener
-```
+    ## Validation checklist
 
+    - Required sections are complete and non-empty.
+- No placeholder content (`TODO`, `TBD`, `lorem`, `placeholder`).
+- Claims are traceable to provided inputs or inspected files.
+- Output includes explicit decisions, risks, and next steps.
 
+    ## Safety / failure rules
 
+    - Pause and ask for clarification if required inputs are missing or contradictory.
+- Do not invent metrics, user evidence, or repository facts.
+- Do not modify unrelated files or broaden scope silently.
+- If high-risk uncertainty remains, return a gated recommendation instead of false precision.
+
+    ## Example commands
+
+    ```shell
+    $problem-hypothesis-sharpener "Run problem hypothesis sharpener on my current project context"
+    python scripts/run.py --input examples/input-example.md
+    python scripts/validate.py --file examples/output-example.md
+    ```
+
+    ## Advanced usage
+
+    - Run in phased mode: discovery -> draft -> validation -> final.
+    - Compare two decision branches and include tradeoff table.
+    - Enforce stricter gates for production/release-critical use.

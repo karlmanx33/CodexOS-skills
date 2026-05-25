@@ -1,71 +1,90 @@
 ---
 name: gtm-strategy-builder
-description: Build a data‑driven go‑to‑market strategy with segmentation, positioning, channel experiments, funnel metrics and unit economics.
+description: Advanced operational skill for gtm-strategy-builder.
+read_when:
+  - When working in gtm-growth workflows
+  - When user asks for gtm strategy builder
+  - When a structured artifact must be generated
+  - When reusable documentation is required
+metadata: {"codex": {"level": "advanced", "category": "gtm-growth", "runtime": "markdown+python", "requires": {"files": ["templates/", "scripts/", "examples/"]}}}
 ---
 
-# Go‑To‑Market Strategy Builder
+# Gtm Strategy Builder
 
-## Purpose
+    Advanced operational skill for gtm-strategy-builder.
 
-Create a **repeatable, channel‑driven go‑to‑market (GTM) strategy** that turns early traction into sustainable growth. This skill guides you through segmenting your market, crafting positioning, selecting acquisition channels, designing experiments and defining metrics so your business can grow without relying solely on founder‑driven sales【112456722640317†L1092-L1116】.
+    ## Activation trigger
 
-## When to use
+    Use this skill when the user requests **gtm strategy builder** and needs a high-confidence, decision-ready outcome in **gtm-growth**.
 
-Use this skill after validating your MVP and before or during the Launch stage. It is appropriate when you need to formalise how you will acquire users, test channels and measure CAC, LTV and payback period. Revisit the strategy before expanding into new segments or entering new markets to avoid premature expansion【112456722640317†L1192-L1204】.
+    ## Required inputs
 
-## Inputs
+    - ICP segments and current traction data.
+- Positioning hypotheses and pricing assumptions.
+- Channel constraints (budget, team bandwidth, timelines).
+- Success metrics (CAC, payback, activation, retention).
 
-- Problem and solution hypotheses that have been validated with early users
-- Early traction data (activation, retention, revenue, user feedback)
-- List of potential customer segments and their characteristics
-- Competitive landscape analysis (from the competitive landscape mapper)
-- Value proposition and pricing assumptions
+    ## Optional inputs
 
-## Process
+    - Previous outputs from this skill family.
+    - Team ownership map and delivery timeline.
+    - Explicit constraints for cost, risk, or compliance.
 
-1. **Consolidate evidence.** Summarise early metrics and insights: which segments are showing traction, what users say they value, and how they discovered your product. Confirm that you have strong product‑market fit signals in at least one segment before investing heavily in GTM.
-2. **Segment and prioritise.** Define ideal customer profiles (ICPs) by demographics, firmographics, roles, pain severity, willingness to pay and buying behaviours. Rank segments based on pain intensity, market size, competitive intensity and regulatory complexity. Select one or two priority segments to focus your initial GTM efforts.
-3. **Craft positioning and messaging.** For each priority segment, articulate the problem statement, describe how your solution uniquely solves it, and highlight differentiators versus competitors. Develop a messaging architecture that includes high‑level tagline, benefit pillars and proof points tailored to the segment.
-4. **Design pricing and packaging.** Align your pricing model (subscription, usage‑based, freemium, enterprise) and packaging with the value delivered and segment expectations. Make explicit assumptions about willingness to pay and expected lifetime value (LTV). Note any hypotheses to validate.
-5. **Select and prioritise acquisition channels.** Brainstorm potential channels—content marketing, SEO, SEM, social media, community, partnerships, influencers, outbound sales, product‑led growth, events—and evaluate them based on your segments’ behaviours and expected costs. Build a channel matrix that lists each channel’s target segment, hypothesised CAC, projected conversion rates and required resources. Select a small number of channels to test first.
-6. **Outline experiments for each channel.** For each chosen channel, design experiments to test viability: define hypotheses (e.g. “Cold outbound to legal directors will convert at 5% to demo”), craft messages and offers, allocate budget and timeline, and specify success metrics (impressions, click‑through rate, conversion to signup, activation, CAC, payback period). Use A/B testing where possible and instrument analytics to capture results.
-7. **Build the funnel and metrics.** Map the stages from awareness to conversion and retention. For each stage, define key metrics (e.g. website visits, lead capture rate, signup conversion, activation rate, retention rate, revenue per user). Calculate unit economics: estimate CAC per channel, LTV per segment, and payback period. Define dashboards and analysis cadence to review performance.
-8. **Plan retention and expansion tactics.** Identify strategies beyond acquisition—onboarding journeys, customer success outreach, community engagement, referral programs, upsells and cross‑sells—to improve retention and increase LTV. Define metrics to track user satisfaction and advocacy.
-9. **Document and iterate.** Compile the GTM strategy into a living document summarising segment analysis, positioning, pricing, channel plan, experiments, funnel design, metrics, unit economics and retention tactics. Assign owners for each channel and set review cadences. Revisit the strategy regularly based on data, and avoid expanding to new markets before your primary channels are repeatable【112456722640317†L1192-L1204】.
+    ## Files to inspect
 
-## Output
+    - `concept/`, `templates/`, `examples/`, `scripts/` in this skill folder.
+    - User-referenced repository files and related modules.
+    - Prior artifacts that constrain or inform this decision.
 
-This skill produces a **go‑to‑market strategy document** containing:
+    ## Execution workflow
 
-- Prioritised customer segments with profiles and rationale
-- Positioning and messaging frameworks for each segment
-- Pricing and packaging hypotheses and assumptions
-- A channel matrix with selected acquisition channels and experimental plans
-- Funnel definitions with metrics at each stage and calculated unit economics (CAC, LTV, payback period)
-- Retention and expansion strategies
-- A schedule for reviewing metrics and iterating the plan
+    1. Prioritize segments/channels using evidence-weighted scoring.
+2. Build positioning/messaging assets mapped to ICP pain and value proof.
+3. Design measurable GTM experiments with clear stop/scale rules.
+4. Quantify unit economics assumptions and sensitivity ranges.
+5. Produce execution roadmap and weekly review cadence.
 
-## Quality checklist
+    ## Generated artifacts
 
-- [ ] Purpose is clear and focuses on repeatable, channel‑driven growth
-- [ ] Inputs include early evidence, segmentation, value proposition and competitive analysis
-- [ ] Steps cover segmentation, positioning, pricing, channel selection, experimentation, metrics and iteration
-- [ ] Outputs articulate segments, messaging, experiments, funnel metrics and unit economics
-- [ ] Failure modes address common GTM pitfalls
+    - `outputs/gtm-strategy.md`
+- `outputs/experiment-matrix.md`
+- `outputs/metrics-dashboard-spec.md`
 
-## Failure modes
+    ## Output contract
 
-- Spreading efforts across too many segments or channels before proving product‑market fit in one
-- Ignoring unit economics and chasing growth that isn’t sustainable
-- Creating messaging and pricing in a vacuum without validation from target customers
-- Failing to instrument experiments, leading to inconclusive results
-- Expanding into new markets prematurely and losing focus on the core segment【112456722640317†L1192-L1204】
+    Final response must include:
 
-## Example prompt
+    - Objective and scope boundaries.
+    - Inputs and assumptions used.
+    - Analysis and decision rationale.
+    - Artifact paths and summary.
+    - Validation result and residual risks.
+    - Next actions ordered by priority.
 
-```shell
-$gtm-strategy-builder
-```
+    ## Validation checklist
 
+    - Required sections are complete and non-empty.
+- No placeholder content (`TODO`, `TBD`, `lorem`, `placeholder`).
+- Claims are traceable to provided inputs or inspected files.
+- Output includes explicit decisions, risks, and next steps.
 
+    ## Safety / failure rules
 
+    - Pause and ask for clarification if required inputs are missing or contradictory.
+- Do not invent metrics, user evidence, or repository facts.
+- Do not modify unrelated files or broaden scope silently.
+- If high-risk uncertainty remains, return a gated recommendation instead of false precision.
+
+    ## Example commands
+
+    ```shell
+    $gtm-strategy-builder "Run gtm strategy builder on my current project context"
+    python scripts/run.py --input examples/input-example.md
+    python scripts/validate.py --file examples/output-example.md
+    ```
+
+    ## Advanced usage
+
+    - Run in phased mode: discovery -> draft -> validation -> final.
+    - Compare two decision branches and include tradeoff table.
+    - Enforce stricter gates for production/release-critical use.

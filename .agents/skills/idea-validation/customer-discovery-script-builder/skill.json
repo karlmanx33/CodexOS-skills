@@ -1,0 +1,31 @@
+{
+  "name": "customer-discovery-script-builder",
+  "category": "idea-validation",
+  "type": "generator",
+  "runtime": "markdown+python",
+  "description": "Generate a neutral, non\u2011leading interview script for customer discovery.",
+  "inputs": [
+    "user_request",
+    "project_context",
+    "constraints"
+  ],
+  "outputs": [
+    "structured_markdown_output",
+    "validated_artifact"
+  ],
+  "scripts": {
+    "run": "scripts/run.py",
+    "validate": "scripts/validate.py"
+  },
+  "templates": [
+    "templates/output.md",
+    "templates/hypothesis.template.md",
+    "templates/assumption-map.template.md",
+    "templates/research-plan.template.md"
+  ],
+  "examples": {
+    "input": "examples/input-example.md",
+    "output": "examples/output-example.md"
+  },
+  "concept": "concept/CONCEPT.md"
+}

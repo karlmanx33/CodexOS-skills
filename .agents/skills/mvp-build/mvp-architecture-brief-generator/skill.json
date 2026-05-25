@@ -1,0 +1,32 @@
+{
+  "name": "mvp-architecture-brief-generator",
+  "category": "mvp-build",
+  "type": "generator",
+  "runtime": "markdown+python",
+  "description": "Create a clear architecture brief before writing or modifying production code.",
+  "inputs": [
+    "user_request",
+    "project_context",
+    "constraints"
+  ],
+  "outputs": [
+    "structured_markdown_output",
+    "validated_artifact"
+  ],
+  "scripts": {
+    "run": "scripts/run.py",
+    "validate": "scripts/validate.py"
+  },
+  "templates": [
+    "templates/output.md",
+    "templates/ARCHITECTURE.template.md",
+    "templates/DATA_MODELS.template.md",
+    "templates/API_BOUNDARIES.template.md",
+    "templates/SECURITY_NOTES.template.md"
+  ],
+  "examples": {
+    "input": "examples/input-example.md",
+    "output": "examples/output-example.md"
+  },
+  "concept": "concept/CONCEPT.md"
+}

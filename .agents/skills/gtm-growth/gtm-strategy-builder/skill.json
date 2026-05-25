@@ -1,0 +1,31 @@
+{
+  "name": "gtm-strategy-builder",
+  "category": "gtm-growth",
+  "type": "generator",
+  "runtime": "markdown+python",
+  "description": "Build a data\u2011driven go\u2011to\u2011market strategy with segmentation, positioning, channel experiments, funnel metrics and unit economics.",
+  "inputs": [
+    "user_request",
+    "project_context",
+    "constraints"
+  ],
+  "outputs": [
+    "structured_markdown_output",
+    "validated_artifact"
+  ],
+  "scripts": {
+    "run": "scripts/run.py",
+    "validate": "scripts/validate.py"
+  },
+  "templates": [
+    "templates/output.md",
+    "templates/positioning.template.md",
+    "templates/messaging.template.md",
+    "templates/launch-plan.template.md"
+  ],
+  "examples": {
+    "input": "examples/input-example.md",
+    "output": "examples/output-example.md"
+  },
+  "concept": "concept/CONCEPT.md"
+}
